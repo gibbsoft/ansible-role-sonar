@@ -23,15 +23,33 @@ The URL from which SonarQube will be downloaded, and the resulting directory nam
 
     sonar_mysql_username: sonar
     sonar_mysql_password: sonar
-    
+
     sonar_mysql_host: localhost
     sonar_mysql_port: "3306"
     sonar_mysql_database: sonar
-    
+
     sonar_mysql_allowed_hosts:
       - 127.0.0.1
       - ::1
       - localhost
+
+To install any Sonar plugins you require, define these variables:
+
+    # Base URL of the maven repo to download from
+    sonar_maven_repobase: http://repo:8081/artifacts
+    # Maven repo name
+    sonar_maven_repo: release
+    # A hash containing details of each plugin to download and install
+    sonar_plugins:
+      - group_id: org.codehaus.sonar-plugins.jmeter
+        artifact_id: sonar-jmeter-plugin
+        version: 0.3
+        type: jar
+
+      - group_id: org.sonarsource.owasp
+        artifact_id: sonar-zap-plugin
+        version: 1.0.0.347
+        type: jar
 
 JDBC settings for a connection to a MySQL database. Defaults presume the database resides on localhost and is only accessible on the SonarQube server itself.
 
